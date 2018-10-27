@@ -1,5 +1,6 @@
 let fa, bg, shadow, icons, icon, colors;
 let fontSize = 120;
+let iconName = 'cog';
 
 function preload() {
     // Load Font Awesome Font
@@ -16,6 +17,12 @@ function setup() {
     // Create the canvas
     createCanvas(400, 400);
 
+    // Create icon change input
+    select('#icon').value(iconName).input(updateIcon);
+
+    // Setup autocomplete for icon name
+    setupAutocomplete();
+
     // Create width and height input
     select('#width').value(width.toString()).input(updateWidth);
     select('#height').value(height.toString()).input(updateHeight);
@@ -27,10 +34,11 @@ function setup() {
     selectRandomBg();
 
     // Get Unicode value for icon
-    icon = parseInt(icons.cog, 16);
+    icon = parseInt(icons[iconName], 16);
 
     // Remove loading info
     select('#loading-info').remove();
+
     // Show input area
     select('#input').style('display', 'block');
 
@@ -135,6 +143,18 @@ function selectRandomBg() {
     ];
 }
 
+// Update icon name on input change
+function updateIcon() {
+    iconName = document.querySelector('#icon').value;
+
+    // Get Unicode value for icon
+    if (icons[iconName]) {
+        icon = parseInt(icons[iconName], 16);
+    }
+
+    redraw();
+}
+
 // Update width of the canvas on input change
 function updateWidth() {
     resizeCanvas(this.value(), height);
@@ -173,4 +193,20 @@ function download() {
     let link = document.querySelector('#download');
     link.href = downloadURL;
     link.click();
+}
+
+// Setup icon name autocomplete
+function setupAutocomplete() {
+    new autoComplete({
+        selector: '#icon',
+        minChars: 2,
+        source: function(term, suggest){
+            term = term.toLowerCase();
+            var matches = [];
+            var choices = Object.keys(icons);
+            for (i=0; i<choices.length; i++)
+                if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+            suggest(matches);
+        }    
+    });
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/autocomplete.css">
     <title>logo_generator</title>
 </head>
 
@@ -18,6 +19,11 @@
 
     <div id="input" style="display: none;" class="mb-4">
         <h2>logo_generator</h2>
+        <div class="form-group">
+            <label for="icon">Icon</label>
+            <input type="text" class="form-control" id="icon" name="icon" onchange="updateIcon()">
+            <p class="text-muted">Icon from Font Awesome Free Solid pack</p>
+        </div>
         <div class="form-group">
             <label for="width">Width</label>
             <input type="number" class="form-control" id="width" name="width">
@@ -44,6 +50,7 @@
 
     <script src="js/p5.js"></script>
     <script src="js/p5.dom.js"></script>
+    <script src="js/autocomplete.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
