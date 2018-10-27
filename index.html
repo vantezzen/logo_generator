@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>logo_generator</title>
+</head>
+
+<body class="container mt-4">
+
+    <div id="loading-info">
+        <h3>Loading logo_generator</h3>
+        <p>Currently loading p5.js, p5.dom, Font Awesome, Bootstrap, script and data for logo generation - this might take a few seconds.</p>
+        <p>Please make sure this page can read and write canvas data, otherwise logos cannot be generated.</p>
+    </div>
+
+    <div id="input" style="display: none;" class="mb-4">
+        <h2>logo_generator</h2>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="number" class="form-control" id="width" name="width">
+        </div>
+        <div class="form-group">
+            <label for="height">Height</label>
+            <input type="number" class="form-control" id="height" name="height">
+        </div>
+        <div class="form-group">
+            <label for="fontsize">Font Size</label>
+            <input type="number" class="form-control" id="fontsize" name="fontsize">
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary btn-block" onclick="newBg()">Change background</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary btn-block" onclick="download()">Download as PNG</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="" download="logo.png" id="download" style="display: none;"></a>
+
+    <script src="js/p5.js"></script>
+    <script src="js/p5.dom.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
