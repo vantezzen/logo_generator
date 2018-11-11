@@ -7,10 +7,10 @@ function preload() {
     fa = loadFont('https://use.fontawesome.com/releases/v5.4.1/webfonts/fa-solid-900.ttf');
 
     // Load availible icons
-    icons = loadJSON('icons.json');
+    icons = loadJSON('data/icons.json');
 
     // Load background colors
-    colors = loadJSON('colors.json');
+    colors = loadJSON('data/colors.json');
 }
 
 function setup() {
